@@ -141,6 +141,36 @@ public class PdfAnnotationImporterTest {
 
         assertEquals(Collections.singletonList(expected),
                 importer.importAnnotations(Path.of("src/test/resources/pdfs/minimal-polygon.pdf")));
+     
+    }
+    
+    @Test
+    public void polygonNoNoteMinimal() {
+        final FileAnnotation expected = new FileAnnotation("Linus Dietz", LocalDateTime.of(2017, 3, 16, 9, 21, 1), 1,
+                "polygon annotation", FileAnnotationType.POLYGON, Optional.empty());
+
+        assertEquals(Collections.singletonList(expected),
+                importer.importAnnotations(Path.of("src/test/resources/pdfs/minimal-polygon.pdf")));
+    }
+
+    @Test
+    public void pdfNotExist() {
+        assertEquals(Collections.emptyList(), importer.importAnnotations(Path.of("src/test/resources/exit.pdf")));
+    }
+
+    @Test
+    public void pdfExist() {
+        assertEquals(Collections.emptyList(), importer.importAnnotations(Path.of("src/test/resources/pdfs/exist.pdf")));
+    }
+
+    @Test
+    public void boldMinimal() {
+        assertEquals(Collections.emptyList(), importer.importAnnotations(Path.of("src/test/resources/pdfs/minimal-text.txt")));
+    }
+
+    @Test
+    public void especialCharacter() {
+        assertEquals(Collections.emptyList(), importer.importAnnotations(Path.of("src/test/resources/pdfs/especial-character.txt")));
     }
 }
 
