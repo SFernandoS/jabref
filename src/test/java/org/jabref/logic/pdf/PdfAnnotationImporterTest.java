@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.jabref.model.pdf.FileAnnotation;
 import org.jabref.model.pdf.FileAnnotationType;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -134,16 +135,6 @@ public class PdfAnnotationImporterTest {
                 importer.importAnnotations(Path.of("src/test/resources/pdfs/minimal-underline.pdf")));
     }
 
-    @Test
-    public void polygonNoNoteMinimal() {
-        final FileAnnotation expected = new FileAnnotation("Linus Dietz", LocalDateTime.of(2017, 3, 16, 9, 21, 1), 1,
-                "polygon annotation", FileAnnotationType.POLYGON, Optional.empty());
-
-        assertEquals(Collections.singletonList(expected),
-                importer.importAnnotations(Path.of("src/test/resources/pdfs/minimal-polygon.pdf")));
-     
-    }
-    
     @Test
     public void polygonNoNoteMinimal() {
         final FileAnnotation expected = new FileAnnotation("Linus Dietz", LocalDateTime.of(2017, 3, 16, 9, 21, 1), 1,
